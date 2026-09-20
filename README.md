@@ -2,7 +2,7 @@
 
 The official website for **MDM (Marth Download Manager)** — a modern desktop download manager for efficient, reliable downloads with browser integration, queue management, pause and resume, and real-time download monitoring.
 
-🌐 **Live at:** [https://marthdownloadmanager.github.io](https://marthdownloadmanager.github.io)
+🌐 **Live at:** [https://marthdownloadmanager.msdevx.space](https://marthdownloadmanager.msdevx.space)
 
 ---
 
