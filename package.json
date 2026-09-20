@@ -1,0 +1,11 @@
+{
+  "name": "marth-download-manager-website",
+  "version": "1.0.0",
+  "description": "Official website for MDM — Marth Download Manager",
+  "scripts": {
+    "start": "python3 server.py 3000",
+    "serve": "npx -y serve -s . -l 3000"
+  },
+  "author": "MS-DevX",
+  "license": "MIT"
+}

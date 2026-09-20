@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <base href="/" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content="#050505" name="theme-color" />
+    <script>
+      // Default to dark theme unless explicitly set to light
+      (function () {
+        try {
+          var stored = localStorage.getItem("mdm-theme");
+          if (!stored || stored === "undefined") {
+            stored = "dark";
+            localStorage.setItem("mdm-theme", "dark");
+          }
+          var root = document.documentElement;
+          if (stored === "dark") {
+            root.classList.add("dark");
+          } else {
+            root.classList.remove("dark");
+          }
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+
+      // Hot reload listener
+      (function() {
+        if (!window.EventSource) return;
+        try {
+          var es = new EventSource("/livereload");
+          es.onmessage = function(e) {
+            if (e.data === "reload") {
+              console.log("[Hot Reload] File changed, reloading page...");
+              window.location.reload();
+            }
+          };
+        } catch(err) {}
+      })();
+
+      // GitHub Pages SPA redirect handler
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <title>MDM — Marth Download Manager</title>
+    <meta
+      content="MDM is a modern desktop download manager for efficient, reliable downloads with browser integration, queue management, pause and resume, and real-time download monitoring."
+      name="description"
+    />
+    <meta content="MS-DevX" name="author" />
+    <link href="https://marthdownloadmanager.github.io/" rel="canonical" />
+    <!-- Open Graph -->
+    <meta content="website" property="og:type" />
+    <meta content="MDM" property="og:site_name" />
+    <meta content="MDM — Marth Download Manager" property="og:title" />
+    <meta
+      content="A modern desktop download manager designed for efficient downloads, reliable transfers, browser integration, and real-time control."
+      property="og:description"
+    />
+    <meta content="https://marthdownloadmanager.github.io/" property="og:url" />
+    <!-- Twitter / X -->
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="MDM — Marth Download Manager" name="twitter:title" />
+    <meta
+      content="A modern desktop download manager designed for efficient downloads, reliable transfers, browser integration, and real-time control."
+      name="twitter:description"
+    />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "MDM",
+        "alternateName": "Marth Download Manager",
+        "applicationCategory": "DownloaderApplication",
+        "operatingSystem": "Windows, Linux, macOS",
+        "description": "A modern desktop download manager designed for efficient downloads, reliable transfers, browser integration, and real-time control.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <link crossorigin="" href="/assets/index.css" rel="stylesheet" />
+    <script crossorigin="" src="/assets/index.js" type="module"></script>
+    <meta content="yes" name="mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="MDM" name="apple-mobile-web-app-title" />
+  </head>
+  <body class="bg-background text-foreground antialiased selection:bg-accent/20 selection:text-accent">
+    <div id="root"></div>
+  </body>
+</html>
