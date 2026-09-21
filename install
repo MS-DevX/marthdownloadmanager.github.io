@@ -632,6 +632,23 @@ setup_native_host() {
         chmod +x "$cli_bin" "$host_bin"
     fi
 
+    # Unpack browser extension into ~/.local/share/mdm/browser-extension
+    local ext_target_dir="${HOME}/.local/share/mdm/browser-extension"
+    local ext_artifact="MDM-${TAG}-browser-extension.zip"
+    local ext_zip="${TMP_DIR}/${ext_artifact}"
+    info "Fetching and unpacking MDM browser extension ($TAG)..."
+    if curl -fSL "${BASE_URL}/${ext_artifact}" -o "$ext_zip" 2>/dev/null && verify_sha256 "$ext_zip" "$ext_artifact"; then
+        mkdir -p "$ext_target_dir"
+        if command -v unzip >/dev/null 2>&1; then
+            unzip -oq "$ext_zip" -d "$ext_target_dir"
+            success "Browser extension unpacked to ${ext_target_dir}."
+        elif command -v python3 >/dev/null 2>&1; then
+            python3 -m zipfile -e "$ext_zip" "$ext_target_dir" 2>/dev/null && success "Browser extension unpacked to ${ext_target_dir}." || true
+        fi
+    else
+        warn "Could not fetch browser extension archive; registration will continue."
+    fi
+
     info "Registering native messaging host for extension ID '${ext_id}'..."
     if [ "$ext_id" = "$DEFAULT_BROWSER_EXT_ID" ]; then
         if "$cli_bin" register-browser-host --binary-path "$host_bin"; then
@@ -735,8 +752,9 @@ elif [ "$OS_TYPE" = "macos" ]; then
 fi
 
 printf "${BOLD}Browser extension:${NC}\n"
-printf "  - After opening MDM, use Settings ${CYAN}D. Browser Integration${NC} (or\n"
-printf "    ${CYAN}mdm browser-extension install${NC}) to copy the extension and register the\n"
-printf "    native messaging host automatically.\n"
-printf "  - Then enable Developer mode at ${CYAN}chrome://extensions${NC} and choose\n"
-printf "    ${CYAN}Load unpacked${NC} → .local/share/mdm/browser-extension.\n\n"
+printf "  ✓ Native messaging host registered for Chrome, Brave, Chromium, Edge & Firefox.\n"
+printf "  ✓ Extension files prepared in ${CYAN}%s${NC}.\n\n" "${HOME}/.local/share/mdm/browser-extension"
+printf "  To enable in your browser (one-time setup):\n"
+printf "    1. Open ${CYAN}chrome://extensions${NC} (or edge://extensions, brave://extensions)\n"
+printf "    2. Toggle ${BOLD}Developer mode${NC} ON (top-right)\n"
+printf "    3. Click ${BOLD}Load unpacked${NC} and select: ${CYAN}%s${NC}\n\n" "${HOME}/.local/share/mdm/browser-extension"
