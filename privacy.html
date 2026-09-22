@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Privacy Policy — MDM Marth Download Manager</title>
+    <meta content="Privacy policy for MDM (Marth Download Manager) and MDM Browser Extension." name="description" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <meta content="#050505" name="theme-color" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link crossorigin="" href="/assets/index.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #050505;
+        color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+      }
+      .privacy-container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+      .privacy-card {
+        background: #0d1117;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 32px;
+        margin-top: 24px;
+      }
+      h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+      h2 { font-size: 20px; font-weight: 700; margin-top: 28px; margin-bottom: 12px; color: #38bdf8; }
+      p, li { font-size: 15px; line-height: 1.7; color: #94a3b8; }
+      ul { padding-left: 20px; margin-top: 8px; margin-bottom: 16px; }
+      li { margin-bottom: 6px; }
+      strong { color: #f1f5f9; }
+      .meta { font-size: 13px; color: #64748b; margin-bottom: 24px; }
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 32px;
+      }
+      .nav-link { color: #94a3b8; text-decoration: none; font-size: 14px; margin-left: 20px; }
+      .nav-link:hover { color: #38bdf8; }
+      .brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <div class="privacy-container">
+      <div class="nav-bar">
+        <a href="/" class="brand">
+          <img src="https://raw.githubusercontent.com/MS-DevX/mdm-releases/main/assets/icon.png" alt="MDM" style="width: 28px; height: 28px; border-radius: 6px;" />
+          MDM Marth Download Manager
+        </a>
+        <div>
+          <a href="/" class="nav-link">Home</a>
+          <a href="/features" class="nav-link">Features</a>
+          <a href="/downloads" class="nav-link">Downloads</a>
+        </div>
+      </div>
+
+      <h1>Privacy Policy</h1>
+      <div class="meta">Last Updated: September 22, 2026</div>
+
+      <div class="privacy-card">
+        <p>
+          At <strong>MDM (Marth Download Manager)</strong> and the <strong>MDM Browser Extension</strong>, we believe privacy is a fundamental right. MDM is built <strong>local-first</strong>. We do not track you, we do not collect personal information, and we do not sell or monetize your data.
+        </p>
+
+        <h2>1. No Personal Data Collection</h2>
+        <p>MDM and its browser extension do not collect, transmit, or store personal information such as your name, email, IP address, browsing history, keystrokes, or account credentials.</p>
+
+        <h2>2. Browser Extension Permissions</h2>
+        <p>The MDM Chrome extension requests permissions solely to capture file downloads and pass them to your local MDM application:</p>
+        <ul>
+          <li><strong>downloads:</strong> Detects and intercepts file downloads you initiate to accelerate them through the desktop engine.</li>
+          <li><strong>storage:</strong> Saves your local extension preferences (such as auto-capture on/off and excluded file types).</li>
+          <li><strong>contextMenus:</strong> Provides right-click "Download with MDM" options for links and media.</li>
+          <li><strong>nativeMessaging:</strong> Communicates exclusively with the MDM desktop application running on your local machine.</li>
+          <li><strong>webRequest:</strong> Inspects media stream requests on web pages you visit to locate downloadable video/audio files.</li>
+          <li><strong>&lt;all_urls&gt;:</strong> Allows download interception to function across any website where you choose to download files.</li>
+        </ul>
+
+        <h2>3. Remote Code Policy</h2>
+        <p>
+          The MDM Browser Extension <strong>does not use remote code</strong>. All code and assets are packaged and executed locally within the extension bundle in strict compliance with Google Chrome Web Store policies.
+        </p>
+
+        <h2>4. Local Data Storage</h2>
+        <p>
+          All download tasks, file paths, and queue history are saved strictly on your local disk in a local database. No download history or file details are ever uploaded to any remote server or cloud service.
+        </p>
+
+        <h2>5. Third-Party Sharing</h2>
+        <p>
+          We do not sell, rent, or share any data with third parties, advertisers, or tracking networks.
+        </p>
+
+        <h2>6. Contact</h2>
+        <p>
+          If you have questions about this policy or MDM, please contact us or open an issue on our official GitHub repository:
+          <br /><br />
+          <a href="https://github.com/MS-DevX/mdm-releases/issues" target="_blank" style="color: #38bdf8; text-decoration: underline;">
+            https://github.com/MS-DevX/mdm-releases/issues
+          </a>
+        </p>
+      </div>
+
+      <div style="margin-top: 40px; text-align: center; font-size: 13px; color: #64748b;">
+        © 2026 MDM (Marth Download Manager). Built by MS-DevX.
+      </div>
+    </div>
+  </body>
+</html>
